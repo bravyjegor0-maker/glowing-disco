@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Какой выбрать ИИ для кодинга в 2026 году — полное сравнение</title>
+    <meta name="description" content="Узнайте, какой выбрать ИИ для программирования. Сравнение Gemini, Claude Code, Cursor, FreeCoder и GigaCode с инструкциями по запуску и настройке.">
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --card-bg: #1f232a;
+            --accent: #2563eb;
+            --text-main: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .brand-credit {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            letter-spacing: 1px;
+            padding: 12px 0;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .bg-shapes {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(45px);
+        }
+
+        .shape-1 { 
+            top: 15%; 
+            left: -5%; 
+            width: 380px; 
+            height: 380px; 
+            background: #2563eb; 
+            animation: float1 12s ease-in-out infinite alternate; 
+        }
+
+        .shape-2 { 
+            bottom: 20%; 
+            right: -5%; 
+            width: 480px; 
+            height: 480px; 
+            background: #8b5cf6; 
+            animation: float2 18s ease-in-out infinite alternate; 
+        }
+
+        .shape-3 { 
+            top: 40%; 
+            left: 30%; 
+            width: 280px; 
+            height: 280px; 
+            background: #06b6d4; 
+            animation: float3 14s ease-in-out infinite alternate; 
+        }
+
+        @keyframes float1 {
+            from { transform: translate(0, 0); }
+            to { transform: translate(80px, 60px); }
+        }
+
+        @keyframes float2 {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-70px, -80px); }
+        }
+
+        @keyframes float3 {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, -50px); }
+        }
+
+        /* Полноразмерный сайдбар для ПК */
+        .sidebar-container {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            width: 180px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .sidebar-toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .sidebar-toggle-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .btn-nav {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 10px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-align: left;
+            text-decoration: none;
+            transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                        color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                        padding 0.4s ease, height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateX(6px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Режим сворачивания кнопок в полоски (ПК) */
+        .sidebar-container.collapsed .sidebar-nav .btn-nav {
+            padding: 0px 4px;
+            height: 3px;
+            margin: -2px 0;
+            font-size: 0px;
+            color: transparent;
+            border-color: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+        }
+
+        .sidebar-container.collapsed {
+            transform: translateX(-15px);
+        }
+
+        @keyframes shakeError {
+            0% { transform: translateX(0); background-color: #dc2626; color: white; }
+            20% { transform: translateX(-5px); }
+            40% { transform: translateX(5px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+            100% { transform: translateX(0); background-color: #dc2626; color: white; }
+        }
+
+        .btn-nav.shake {
+            animation: shakeError 0.35s ease-in-out;
+            border-color: #ef4444;
+            box-shadow: 0 0 12px rgba(220, 38, 38, 0.6);
+        }
+
+        .btn-nav.spam-lock {
+            animation: none !important;
+            background-color: #dc2626 !important;
+            color: #ffffff !important;
+            border-color: #ef4444 !important;
+            transform: scale(0.92) !important;
+            box-shadow: 0 0 18px rgba(220, 38, 38, 0.7) !important;
+        }
+
+        .spam-toast {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background: rgba(220, 38, 38, 0.9);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+
+        .spam-toast.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Кнопка помощи */
+        .ai-help-trigger {
+            position: fixed;
+            top: 20px;
+            right: 25px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease, background 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-help-trigger:hover {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+
+        .ai-help-trigger.shifted {
+            transform: translateX(180px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .ai-chat-window {
+            position: fixed;
+            width: 360px;
+            height: 480px;
+            background: #181c24;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.2);
+            transform-origin: top right;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .ai-chat-window.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        .chat-header {
+            background: #11141a;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .chat-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .history-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 2px 6px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .history-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .chat-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .chat-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .chat-close-btn:hover {
+            color: #ef4444;
+        }
+
+        .chat-history-drawer {
+            position: absolute;
+            top: 48px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 48px);
+            background: #13161d;
+            z-index: 10;
+            padding: 15px;
+            box-sizing: border-box;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .chat-history-drawer.open {
+            transform: translateX(0);
+        }
+
+        .history-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .history-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .history-item {
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .history-item:hover {
+            background: var(--accent);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .message.bot {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user {
+            background: var(--accent);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-area {
+            padding: 10px 12px;
+            background: #11141a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: #1f2430;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 8px 14px;
+            color: white;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .send-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .send-btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-screen {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h1 { 
+            margin: 0; 
+            font-size: 2.8rem; 
+            color: white; 
+            line-height: 1.2; 
+        }
+
+        p.subtitle { 
+            color: var(--text-secondary); 
+            max-width: 650px; 
+            margin: 1.5rem auto; 
+            font-size: 1.15rem; 
+            line-height: 1.6;
+        }
+
+        .top-spacer {
+            height: 30vh;
+        }
+
+        section {
+            min-height: 90vh;
+            padding: 4rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-wrapper {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--accent);
+            width: 100%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .card-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-wrapper.highlight {
+            border-color: #f59e0b;
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+        }
+
+        h2.section-title {
+            color: white;
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        p.big-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin: 0 0 1.2rem 0;
+        }
+
+        .info-list {
+            margin: 1rem 0 1.5rem 1.2rem;
+            padding: 0;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .info-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong { color: #fff; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #161b22;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 1.8rem;
+        }
+
+        th, td { 
+            padding: 1.1rem 1.3rem; 
+            text-align: left; 
+            border-bottom: 1px solid rgba(255,255,255,0.08); 
+            font-size: 0.95rem;
+        }
+
+        th { 
+            background: #0d1117; 
+            color: #60a5fa; 
+        }
+
+        tr:hover { 
+            background: rgba(255,255,255,0.03); 
+        }
+
+        tr.gemini-row {
+            background: rgba(37, 99, 235, 0.12);
+        }
+
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.4rem 1.8rem;
+            border-radius: 16px;
+        }
+
+        .step-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #60a5fa;
+            font-size: 1.15rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin: 0 0 0.4rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Полоски вызова скрыты на ПК по умолчанию */
+        .mobile-edge-bar {
+            display: none;
+        }
+
+        /* ========================================================= */
+        /*   МОБИЛЬНАЯ ВЕРСИЯ (экран шириной менее 768px)            */
+        /* ========================================================= */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.8rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p.subtitle {
+                font-size: 0.95rem;
+            }
+
+            .card-wrapper {
+                padding: 1.2rem;
+                border-radius: 16px;
+            }
+
+            h2.section-title {
+                font-size: 1.4rem;
+            }
+
+            p.big-text {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            table {
+                font-size: 0.7rem;
+                margin-top: 1rem;
+            }
+
+            th, td {
+                padding: 0.5rem 0.4rem;
+            }
+
+            .step-card {
+                padding: 0.9rem 1rem;
+            }
+
+            .sidebar-toggle-btn {
+                display: none;
+            }
+
+            /* Зафиксированные боковые полоски для вызова кнопок (всегда на месте при прокрутке) */
+            .mobile-edge-bar {
+                display: flex;
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 8px;
+                height: 80px;
+                border-radius: 4px;
+                z-index: 1500;
+                cursor: pointer;
+            }
+
+            .mobile-edge-bar.left {
+                left: 0;
+                background: var(--accent);
+                box-shadow: 2px 0 12px rgba(37, 99, 235, 0.8);
+            }
+
+            .mobile-edge-bar.right {
+                right: 0;
+                background: #8b5cf6;
+                box-shadow: -2px 0 12px rgba(139, 92, 246, 0.8);
+            }
+
+            /* Мобильное меню: чисто кнопки без фона, убирающиеся за экран */
+            .sidebar-container {
+                position: fixed;
+                top: 80px;
+                left: 10px;
+                width: auto;
+                background: none;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                transform: translateX(-150%);
+                transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                z-index: 1400;
+            }
+
+            .sidebar-container.mobile-open {
+                transform: translateX(0);
+            }
+
+            .btn-nav {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            }
+
+            /* Кнопка вызова помощи за экраном справа */
+            .ai-help-trigger {
+                position: fixed;
+                top: 80px;
+                right: 10px;
+                transform: translateX(180%);
+                transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                z-index: 1400;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            }
+
+            .ai-help-trigger.mobile-open {
+                transform: translateX(0);
+            }
+
+            /* Окно чата адаптировано под экраны смартфонов */
+            .ai-chat-window {
+                width: 92vw;
+                height: 70vh;
+                top: 12vh !important;
+                right: 4vw !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="spam-toast" id="spamToast">⚠️ Не спамьте! Вы уже кликаете слишком часто.</div>
+
+    <!-- МОБИЛЬНЫЕ ПОЛОСКИ ВЫЗОВА КНОПОК -->
+    <div class="mobile-edge-bar left" id="mobileLeftBar" title="Открыть кнопки навигации"></div>
+    <div class="mobile-edge-bar right" id="mobileRightBar" title="Открыть кнопку помощи"></div>
+
+    <!-- КНОПКА ВЫЗОВА ПОМОЩИ -->
+    <button class="ai-help-trigger" id="aiHelpBtn">
+        ✨ Помощь по сайту
+    </button>
+
+    <!-- ОКНО ЧАТА ПОМОЩИ -->
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-header-left">
+                <button class="history-btn" id="historyToggle" title="История запросов">📜</button>
+                <span class="chat-title">Умный поиск</span>
+            </div>
+            <button class="chat-close-btn" id="chatCloseBtn">&times;</button>
+        </div>
+
+        <!-- Выдвижная история -->
+        <div class="chat-history-drawer" id="historyDrawer">
+            <div class="history-title">История запросов</div>
+            <ul class="history-list" id="historyList">
+                <li class="history-item" onclick="executeCommand('найди gemini')">найди gemini</li>
+                <li class="history-item" onclick="executeCommand('найди запуск')">найди запуск</li>
+            </ul>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">Привет! Напиши мне нужное слово, например: <b>найди gemini</b> или <b>найди запуск</b>.</div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Напиши, например: найди cursor..." />
+            <button class="send-btn" id="sendBtn" title="Отправить">↑</button>
+        </div>
+    </div>
+
+    <div class="brand-credit">Создано при поддержке GEMINI</div>
+
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="sidebar-container" id="sidebarContainer">
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Свернуть/Развернуть меню">◀</button>
+        <nav class="sidebar-nav">
+            <a href="#top" class="btn-nav" id="toTopBtn">↑ Наверх</a>
+            <a href="#gemini" class="btn-nav">Gemini</a>
+            <a href="#free" class="btn-nav">FreeCoder</a>
+            <a href="#claude" class="btn-nav">Claude Code</a>
+            <a href="#cursor" class="btn-nav">Cursor</a>
+            <a href="#gigacode" class="btn-nav">GigaCode</a>
+            <a href="#compare" class="btn-nav">Таблица</a>
+            <a href="#guide" class="btn-nav">Запуск ИИ</a>
+            <a href="#faq" class="btn-nav">Вопросы</a>
+        </nav>
+    </div>
+
+    <div class="container">
+
+        <header class="header-screen" id="top">
+            <h1>Сравнение AI‑инструментов для разработки</h1>
+            <p class="subtitle">Полный гид 2026 года по подбору, настройке и интеграции умных ИИ-ассистентов в рабочий процесс программиста.</p>
+        </header>
+
+        <div class="top-spacer"></div>
+
+        <section id="gemini">
+            <div class="card-wrapper" style="border-left-color: #60a5fa;" data-keywords="gemini флагман мультимодальный ии ассистент контекст">
+                <h2 class="section-title">Gemini</h2>
+                <p class="big-text">
+                    <strong>Флагманский мультимодальный ИИ-ассистент последнего поколения.</strong> Gemini задаёт стандарты в области кодинга благодаря рекордным размерам контекстного окна и уникальной способности анализировать крупные фрагменты архитектуры целиком.
+                </p>
+                <ul class="info-list">
+                    <li><strong>Мультимодальный анализ:</strong> Подгружайте UI-макеты, схемы баз данных или снимки экранов с ошибками вместе с кодом.</li>
+                    <li><strong>Поиск уязвимостей и отладка:</strong> Мгновенно находит логические ошибки, гонки преследования и утечки памяти.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="free">
+            <div class="card-wrapper" data-keywords="freecoder фрикодер открытый исходный код бесплатен локально приватность">
+                <h2 class="section-title">FreeCoder</h2>
+                <p class="big-text">
+                    <strong>Полностью автономен, бесплатен и под вашим контролем.</strong> FreeCoder — это решение с открытым исходным кодом, предназначенное для разработчиков, предпочитающих свободу от платных подписок.
+                </p>
+                <ul class="info-list">
+                    <li><strong>Полная приватность:</strong> Весь код обрабатывается локально на вашем компьютере без отправки данных.</li>
+                    <li><strong>Кастомизация:</strong> Возможность подключать любые локальные LLM-модели (Ollama, LM Studio).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="claude">
+            <div class="card-wrapper" data-keywords="claude code клод консольный агент антропик рефакторинг терминал">
+                <h2 class="section-title">Claude Code</h2>
+                <p class="big-text">
+                    <strong>Интеллектуальный консольный агент от Anthropic.</strong> Специализированное решение для глубокого рефакторинга, написания архитектуры и решения задач повышенной сложности в терминале.
+                </p>
+                <ul class="info-list">
+                    <li><strong>Глубокая логика:</strong> Продумывает последовательные шаги перед изменением файлов в проекте.</li>
+                    <li><strong>Работа в CLI:</strong> Выполняет консольные команды, запускает тесты и фиксирует ошибки сборки.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="cursor">
+            <div class="card-wrapper" data-keywords="cursor курсор ide редактор vs code автокомплит чат">
+                <h2 class="section-title">Cursor</h2>
+                <p class="big-text">
+                    <strong>Современная IDE со встроенным искусственным интеллектом.</strong> Создан на базе популярного редактора VS Code, благодаря чему обеспечивает плавный перенос всех привычных плагинов.
+                </p>
+                <ul class="info-list">
+                    <li><strong>Умный автокомплит:</strong> Предсказывает целые блоки кода и автоматически делает правки на лету.</li>
+                    <li><strong>Контекстный чат:</strong> Задавайте вопросы прямо в редакторе и применяйте изменения в один клик.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="gigacode">
+            <div class="card-wrapper" data-keywords="gigacode гигакод безопасность корпоративный приватность enterprise">
+                <h2 class="section-title">GigaCode</h2>
+                <p class="big-text">
+                    <strong>Безопасность и корпоративный уровень приватности.</strong> GigaCode разработан для защиты интеллектуальной собственности и безопасной работы с конфиденциальным кодом.
+                </p>
+                <ul class="info-list">
+                    <li><strong>Локальное развертывание:</strong> Полная защита от утечек данных на собственных серверах.</li>
+                    <li><strong>Оптимизация под бизнес:</strong> Поддержка специфических корпоративных библиотек.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="compare">
+            <div class="card-wrapper" data-keywords="таблица сравнительный анализ плюсы минусы сравнение">
+                <h2 class="section-title">Сравнительный анализ</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Инструмент</th>
+                            <th>Плюсы</th>
+                            <th>Минусы</th>
+                            <th>Для кого подходит</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="gemini-row">
+                            <td><b>Gemini</b></td>
+                            <td>Огромный контекст, мультимодальность</td>
+                            <td>Требует интернет</td>
+                            <td>Универсальный инструмент</td>
+                        </tr>
+                        <tr>
+                            <td><b>FreeCoder</b></td>
+                            <td>Open-Source, бесплатен</td>
+                            <td>Слаб на сложных алгоритмах</td>
+                            <td>Студенты, энтузиасты</td>
+                        </tr>
+                        <tr>
+                            <td><b>Claude Code</b></td>
+                            <td>Высокая точность, CLI</td>
+                            <td>Платный доступ</td>
+                            <td>Senior-разработчики</td>
+                        </tr>
+                        <tr>
+                            <td><b>Cursor</b></td>
+                            <td>Всё в одном окне</td>
+                            <td>Зависимость от VS Code</td>
+                            <td>Фронтендеры</td>
+                        </tr>
+                        <tr>
+                            <td><b>GigaCode</b></td>
+                            <td>Корпоративная безопасность</td>
+                            <td>Узкая специализация</td>
+                            <td>Enterprise-проекты</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="guide">
+            <div class="card-wrapper" data-keywords="запуск ии инструкция настройка гайд как запустить">
+                <h2 class="section-title">Инструкция по запуску ИИ</h2>
+                <p class="big-text">Следуйте этому пошаговому руководству, чтобы успешно интегрировать выбранного ассистента:</p>
+                <div class="guide-steps">
+                    <div class="step-card">
+                        <h3>Шаг 1. Выбор инструмента</h3>
+                        <p class="big-text" style="margin:0;">Определитесь с задачами: для верстки и анализа файлов отлично подойдет Gemini или Cursor.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>Шаг 2. Получение ключа доступа</h3>
+                        <p class="big-text" style="margin:0;">Зарегистрируйтесь на официальной платформе сервиса и сгенерируйте API-ключ в личном кабинете.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>Шаг 3. Интеграция и тестирование</h3>
+                        <p class="big-text" style="margin:0;">Добавьте ключ в конфигурационные файлы проекта и проверьте корректность работы ответов.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="card-wrapper" data-keywords="частые вопросы faq ответы поддержка">
+                <h2 class="section-title">Частые вопросы (FAQ)</h2>
+                <div class="faq-item">
+                    <h3>Безопасно ли передавать код ИИ?</h3>
+                    <p class="big-text" style="margin:0;">Флагманские модели вроде Gemini соблюдают стандарты конфиденциальности. Для секретного кода можно использовать локальные решения (FreeCoder).</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Нужно ли уметь программировать?</h3>
+                    <p class="big-text" style="margin:0;">ИИ значительно облегчает порог входа, помогая писать код с нуля, но базовое понимание логики работы сайтов обязательно.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Сравнение ИИ-инструментов для разработки. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Плавное появление карточек при прокрутке
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-wrapper').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Управление сворачиванием сайдбара на ПК
+        const sidebarContainer = document.getElementById('sidebarContainer');
+        const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+
+        sidebarToggleBtn.addEventListener('click', () => {
+            sidebarContainer.classList.toggle('collapsed');
+            if (sidebarContainer.classList.contains('collapsed')) {
+                sidebarToggleBtn.textContent = '▶';
+            } else {
+                sidebarToggleBtn.textContent = '◀';
+            }
+        });
+
+        // Управление мобильными полосками
+        const mobileLeftBar = document.getElementById('mobileLeftBar');
+        const mobileRightBar = document.getElementById('mobileRightBar');
+        const aiHelpBtn = document.getElementById('aiHelpBtn');
+
+        mobileLeftBar.addEventListener('click', () => {
+            sidebarContainer.classList.toggle('mobile-open');
+        });
+
+        mobileRightBar.addEventListener('click', () => {
+            aiHelpBtn.classList.toggle('mobile-open');
+        });
+
+        // Защита от спама на навигационных кнопках
+        const spamToast = document.getElementById('spamToast');
+        let clickCounts = {};
+
+        document.querySelectorAll('.btn-nav').forEach(btn => {
+            const btnId = btn.getAttribute('href');
+            clickCounts[btnId] = 0;
+
+            btn.addEventListener('click', (e) => {
+                const href = btn.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+
+                    if (btn.classList.contains('spam-lock')) {
+                        return;
+                    }
+
+                    clickCounts[href]++;
+
+                    if (clickCounts[href] >= 4) {
+                        btn.classList.add('spam-lock');
+                        spamToast.classList.add('show');
+                        aiHelpBtn.classList.add('shifted');
+
+                        setTimeout(() => {
+                            spamToast.classList.remove('show');
+                            aiHelpBtn.classList.remove('shifted');
+                            
+                            document.querySelectorAll('.btn-nav').forEach(b => {
+                                b.classList.remove('spam-lock');
+                            });
+                            Object.keys(clickCounts).forEach(key => {
+                                clickCounts[key] = 0;
+                            });
+                        }, 3000);
+
+                        return;
+                    }
+
+                    if (clickCounts[href] > 1) {
+                        btn.classList.remove('shake');
+                        void btn.offsetWidth;
+                        btn.classList.add('shake');
+                        setTimeout(() => btn.classList.remove('shake'), 350);
+                    }
+
+                    const targetEl = document.querySelector(href);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    // Автоматически скрывать мобильные кнопки при выборе раздела
+                    sidebarContainer.classList.remove('mobile-open');
+                }
+            });
+        });
+
+        // Управление чатом помощи
+        const aiChatWindow = document.getElementById('aiChatWindow');
+        const chatCloseBtn = document.getElementById('chatCloseBtn');
+        const historyToggle = document.getElementById('historyToggle');
+        const historyDrawer = document.getElementById('historyDrawer');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        aiHelpBtn.addEventListener('click', () => {
+            const rect = aiHelpBtn.getBoundingClientRect();
+            if (window.innerWidth > 768) {
+                aiChatWindow.style.top = (rect.bottom + 10) + 'px';
+                aiChatWindow.style.right = (window.innerWidth - rect.right) + 'px';
+            }
+            aiChatWindow.classList.toggle('active');
+        });
+
+        chatCloseBtn.addEventListener('click', () => {
+            aiChatWindow.classList.remove('active');
+        });
+
+        historyToggle.addEventListener('click', () => {
+            historyDrawer.classList.toggle('open');
+        });
+
+        // Функция обработки команд с поддержкой опечаток
+        function executeCommand(text) {
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.textContent = text;
+            chatMessages.appendChild(userMsg);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot';
+                
+                let cleanText = text.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()?«»""'']/g, "").trim();
+                let words = cleanText.split(/\s+/);
+
+                let targetId = '';
+                let responseText = '';
+
+                const приветVariants = ['привет', 'првиет', 'прив', 'превед', 'привед', 'привэт', 'пртвет', 'приает', 'хай', 'hello', 'хелло', 'здравствуйте', 'здарова', 'приветствую', 'добрый'];
+                const isGreeting = words.some(w => приветVariants.includes(w));
+
+                const найдиVariants = ['найди', 'найды', 'найдь', 'наиди', 'найдиь', 'найдиш', 'найдите', 'найдити', 'найдии', 'знайти', 'найдиме', 'най', 'покажи', 'покаж', 'пакажи'];
+                const hasFindKeyword = words.some(w => найдиVariants.includes(w));
+
+                if (isGreeting && words.length <= 2) {
+                    responseText = 'Привет! Напиши мне нужное слово, например: «найди gemini» или «найди запуск».';
+                } else if (cleanText.includes('gemini') || cleanText.includes('гемини')) {
+                    targetId = 'gemini';
+                    responseText = 'Перехожу к разделу Gemini!';
+                } else if (cleanText.includes('freecoder') || cleanText.includes('фрикодер')) {
+                    targetId = 'free';
+                    responseText = 'Открываю FreeCoder.';
+                } else if (cleanText.includes('claude') || cleanText.includes('клод') || cleanText.includes('код')) {
+                    targetId = 'claude';
+                    responseText = 'Показываю информацию про Claude Code.';
+                } else if (cleanText.includes('cursor') || cleanText.includes('курсор')) {
+                    targetId = 'cursor';
+                    responseText = 'Перенаправляю к редактору Cursor.';
+                } else if (cleanText.includes('gigacode') || cleanText.includes('гигакод')) {
+                    targetId = 'gigacode';
+                    responseText = 'Открываю раздел GigaCode.';
+                } else if (cleanText.includes('таблиц') || cleanText.includes('сравн')) {
+                    targetId = 'compare';
+                    responseText = 'Вот сравнительная таблица инструментов.';
+                } else if (cleanText.includes('запуск') || cleanText.includes('инструкц') || cleanText.includes('гайд')) {
+                    targetId = 'guide';
+                    responseText = 'Открываю инструкцию по запуску ИИ.';
+                } else if (cleanText.includes('вопрос') || cleanText.includes('faq')) {
+                    targetId = 'faq';
+                    responseText = 'Перехожу к частым вопросам.';
+                } else {
+                    const cards = document.querySelectorAll('.card-wrapper');
+                    let found = false;
+                    cards.forEach(card => {
+                        const keywords = card.getAttribute('data-keywords') || '';
+                        const title = card.querySelector('h2').textContent.toLowerCase();
+                        if (cleanText.includes(title) || keywords.split(' ').some(kw => cleanText.includes(kw))) {
+                            targetId = card.closest('section').id;
+                            found = true;
+                        }
+                    });
+
+                    if (found) {
+                        responseText = 'Нашел подходящий раздел по вашему запросу!';
+                    } else if (hasFindKeyword) {
+                        responseText = 'Я понял, что вы хотите что-то найти, но такого термина на сайте нет. Попробуйте написать: «найди gemini» или «найди запуск».';
+                    } else {
+                        responseText = 'Я не совсем понял запрос. Напиши, например: «найди gemini» или «найди запуск».';
+                    }
+                }
+
+                botMsg.textContent = responseText;
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                if (targetId) {
+                    const section = document.getElementById(targetId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const card = section.querySelector('.card-wrapper');
+                        if (card) {
+                            card.classList.add('highlight');
+                            setTimeout(() => card.classList.remove('highlight'), 1500);
+                        }
+                    }
+                }
+            }, 400);
+        }
+
+        sendBtn.addEventListener('click', () => {
+            const val = chatInput.value.trim();
+            if (val) executeCommand(val);
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const val = chatInput.value.trim();
+                if (val) executeCommand(val);
+            }
+        });
+    </script>
+</body>
+</html>
